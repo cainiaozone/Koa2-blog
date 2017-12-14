@@ -1,0 +1,54 @@
+<% include header %>
+  <div class="container">
+    <form class="form create" method="post">
+      <h1 class="sign-title">注册</h1>
+      <div>
+        <label>用户名：</label>
+        <input type="text" name="name" placeholder="用户名">
+      </div>
+      <div>
+        <label>密码：</label>
+        <input type="password" name="password" class="password">
+      </div>
+      <div class="bottom20">
+        <label>重复密码：</label>
+        <input type="password" name="repeatpass" class="repeatpass">
+      </div>
+      <button type="button" class="submit">注册</button>
+    </form>
+  </div>
+  <script type="text/javascript">
+    $(function() {
+      $('.submit').click(() => {
+        // console.log($('.form').serialize())
+        $.ajax({
+          url: '/signup',
+          data: $('.form').serialize(),
+          type: 'POST',
+          cache: false,
+          dataType: 'json',
+          success: function(msg) {
+            if (msg.data == 1) {
+              $('.error').text('用户名存在')
+              $('input').val('')
+              fade('.error')
+            } else if (msg.data == 2) {
+              $('.error').text('两次密码输入不一致')
+              fade('.error')
+            } else if (msg.data == 3) {
+              $('.success').text('注册成功')
+              fade('.success');
+              setInterval(() => {
+                window.location.href = '/signin'
+              }, 1000)
+            }
+            // console.log($('.ui.error.message').text());
+          },
+          error: function() {
+            alert('异常')
+          }
+        })
+      })
+    })
+  </script>
+  <% include footer %>

@@ -1,0 +1,42 @@
+<% include header %>
+  <div class="container">
+    <ul class="posts">
+      <% posts.forEach(function(res){ %>
+        <li>
+          <!-- 文章内容 -->
+          <a href="/posts/<%= res['id'] %>">
+            <h3 class="post-title">
+              <%= res['title'] %>
+          </h3>
+          </a>
+          <div class="post-user">
+            <a href="/posts?author=<%= res['name'] %>">
+                <span class="post-user right10">
+                  作者:<%= res['name'] %>
+                </span>
+              </a>
+            <span class="post-time">
+                发表时间：
+                <%= res['moment']%>
+              </span>
+          </div>
+          <div class="post-content">
+            <%= res['content'] %>
+          </div>
+
+          <!-- 文章数据 -->
+          <div class="post-data">
+            <span class="post-comments right10">
+              评论数:
+              <%= res['comments'] %>
+            </span>
+            <span class="post-pv">
+              浏览数:
+              <%= res['pv'] %>
+            </span>
+          </div>
+        </li>
+        <% }) %>
+    </ul>
+  </div>
+  <% include footer %>
