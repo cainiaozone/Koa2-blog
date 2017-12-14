@@ -1,0 +1,245 @@
+body, button input, select, textarea {
+  font: 14px/1.5 "Microsoft YaHei", sans-serif
+}
+
+body, header, ul, li, p, div, html, span, h3, a {
+  margin: 0;
+  padding: 0;
+  color: #333;
+}
+
+a {
+  text-decoration: none;
+}
+
+li {
+  list-style: none;
+}
+
+.fl {
+  float: left;
+}
+
+.fr {
+  float: right;
+}
+
+.right10 {
+  margin-right: 10px;
+}
+
+.bottom10 {
+  margin-bottom: 10px;
+}
+
+.bottom20 {
+  margin-bottom: 20px;
+}
+
+header {
+  width: 90%;
+  margin: 20px auto;
+  overflow: hidden;
+  /* display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flex;
+  display: -o-flex;
+  display: flex;
+  justify-content: space-between; */
+}
+
+.logo {
+  font-size: 20px;
+}
+
+.user-name {
+  font-size: 12px;
+  display: inline-block;
+  color: #000;
+  padding: 2px;
+  border-radius: 10px;
+}
+
+.has-user a, .has-user span, .none-user a {
+  display: inline-block;
+  margin-top: 3px;
+  padding: 2px 8px;
+  color: #fff;
+  font-size: 14px;
+  border-radius: 4px;
+  background: #5FB878;
+  cursor: pointer;
+}
+
+.container {
+  position: absolute;
+  top: 65px;
+  width: 90%;
+  left: 5%;
+  right: 5%;
+  bottom: 0;
+}
+
+.form {
+  margin: 20px auto;
+}
+
+label {
+  display: block;
+  margin: 10px 0;
+}
+
+input {
+  display: block;
+  width: 100%;
+  height: 40px;
+  padding-left: 10px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+button:focus, input:focus, select:focus, textarea:focus {
+  outline-width: 0
+}
+
+input:focus, textarea:focus {
+  border-color: #009DDA
+}
+
+textarea {
+  width: 100%;
+  height: 200px;
+  padding: 6px;
+  font-size: 14px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  resize: none;
+}
+
+.submit {
+  width: 100%;
+  height: 35px;
+  line-height: 35px;
+  text-align: center;
+  color: #fff;
+  font-size: 14px;
+  border-radius: 4px;
+  background: #5FB878;
+  border: none;
+}
+
+.signin {
+  position: absolute;
+  top: 10%;
+  left: 0;
+  right: 0;
+}
+
+.sign-title {
+  text-align: center;
+  letter-spacing: 2px
+}
+
+.posts {
+  list-style: none;
+}
+
+.posts li {
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 12px;
+}
+
+.post-content {
+  margin-bottom: 12px;
+  background: #ddd;
+  padding: 10px 8px;
+  border-radius: 4px;
+}
+
+.post-title, .post-user {
+  margin-bottom: 12px;
+}
+
+.post-time {
+  float: right;
+}
+
+.spost {
+  margin: 0 auto;
+  padding: 12px;
+  overflow: hidden;
+  border: 1px solid #ddd;
+}
+
+.edit {
+  position: absolute;
+  right: 20px;
+  bottom: 5px;
+}
+
+.edit p {
+  display: inline-block;
+  margin-left: 10px;
+}
+
+.comment-wrap {
+  margin: 20px auto;
+}
+
+.cmt-item {
+  background: #ddd;
+  padding: 12px;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.delete-comment, .delete-post {
+  cursor: pointer;
+}
+
+.delete-comment:hover, .delete-post:hover {
+  color: #f60;
+}
+
+a:hover {
+  color: #f60;
+}
+
+.message {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  padding: 4px 20px;
+  width: 100px;
+  margin-left: -70px;
+  text-align: center;
+  background-color: rgba(0, 0, 0, 0.6);
+  border-radius: 4px;
+  z-index: 1
+}
+
+.error {
+  display: none;
+  color: #FF4431;
+}
+
+.success {
+  display: none;
+  color: #5FB878;
+}
+
+.myinfo {
+  text-align: center;
+  line-height: 2;
+}
+
+.avator {
+  display: block;
+  margin: 20px auto;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+}
