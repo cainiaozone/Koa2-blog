@@ -1,4 +1,3 @@
-﻿
 var Koa = require('koa');
 var path = require('path');
 var bodyParser = require('koa-bodyparser');
