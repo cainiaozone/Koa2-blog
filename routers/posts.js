@@ -16,8 +16,8 @@ router.get('/posts', async (ctx, next) => {
     console.log('ctx.request.querystring', decodeURIComponent(ctx.request.querystring.split('=')[1]))
     await userModel.findDataByUser(decodeURIComponent(ctx.request.querystring.splict('=')[1]))
       .then(result => {
-        res = JSON.parse(JSON.stringify(result)) <<
-          // console.log(res)
+        res = JSON.parse(JSON.stringify(result))
+        // console.log(res)
       });
     await ctx.render('posts', {
       session: ctx.session,
@@ -28,8 +28,8 @@ router.get('/posts', async (ctx, next) => {
     await userModel.findAllPost()
       .then(result => {
         // console.log(result)
-        res = JSON.parse(JSON.stringify(result)) <<
-          // console.log('posts:', res)
+        res = JSON.parse(JSON.stringify(result))
+        // console.log('posts:', res)
       })
     await ctx.render('posts', {
       session: ctx.session,
@@ -47,17 +47,17 @@ router.get('/create', async (ctx, next) => {
 })
 
 // POST '/create'  发布文章
-router.post('/create', async (ctx, next) => { <<
+router.post('/create', async (ctx, next) => {
   // console.log(ctx.session)
   var title = ctx.request.body.title;
   var content = ctx.request.body.content;
   var uid = ctx.session.id;
   var name = ctx.session.user;
-  var time = moment().format('YYYY-MM-DD HH:mm') <<
-    // console.log([name, title, content, uid, time])
+  var time = moment().format('YYYY-MM-DD HH:mm')
+  // console.log([name, title, content, uid, time])
 
-    // 这里我们向数据库插入用户名、标题、内容、发表文章用户的 id、时间，成功返回 true，失败返回 false
-    await userModel.insertPost([name, title, content, uid, time])
+  // 这里我们向数据库插入用户名、标题、内容、发表文章用户的 id、时间，成功返回 true，失败返回 false
+  await userModel.insertPost([name, title, content, uid, time])
     .then(() => {
       ctx.body = 'true'
     }).catch(() => {
@@ -99,16 +99,8 @@ router.post('/:postId', async (ctx, next) => {
   await userModel.insertComment([name, content, postId])
   // 获取文章评论数据 +1
   await userModel.findDataById(postId)
-    .then(result => { <<
-      <<
-      << < HEAD
-        // console.log(JSON.parse(JSON.stringify(result)));
-        ===
-        ===
-        =
-        console.log(JSON.parse(JSON.stringify(result))); >>>
-      >>>
-      > 2 f0970eff13433e8641ac6e0ab940045f0c1c4df
+    .then(result => {
+      // console.log(JSON.parse(JSON.stringify(result)));
       res_comments = parseInt(JSON.parse(JSON.stringify(result))[0]['comments'])
       res_comments += 1
     })

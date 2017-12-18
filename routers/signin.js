@@ -14,6 +14,7 @@ router.get('/signin', async (ctx, next) => {
 // POST '/sigin' 登录页面
 router.post('/signin', async (ctx, next) => {
   // console.log(ctx.request.body)
+
   var name = ctx.request.body.name;
   var pass = ctx.request.body.password;
 
