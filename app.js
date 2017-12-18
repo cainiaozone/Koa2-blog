@@ -1,4 +1,7 @@
+<<<<<<< HEAD
 ﻿
+=======
+>>>>>>> 2f0970eff13433e8641ac6e0ab940045f0c1c4df
 var Koa = require('koa');
 var path = require('path');
 var bodyParser = require('koa-bodyparser');

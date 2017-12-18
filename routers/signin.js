@@ -13,7 +13,11 @@ router.get('/signin', async (ctx, next) => {
 
 // POST '/sigin' 登录页面
 router.post('/signin', async (ctx, next) => {
+<<<<<<< HEAD
   console.log(ctx.request.body)
+=======
+  // console.log(ctx.request.body)
+>>>>>>> 2f0970eff13433e8641ac6e0ab940045f0c1c4df
   var name = ctx.request.body.name;
   var pass = ctx.request.body.password;
 
@@ -29,11 +33,16 @@ router.post('/signin', async (ctx, next) => {
         ctx.session.user = res[0]['name']
         ctx.session.id = res[0]['id']
         // console.log('ctx.session.id', ctx.session.id)
+<<<<<<< HEAD
         // console.log('session', ctx.session)
         console.log('登录成功')
       } else {
         ctx.body = 'false'
         console.log('用户名或密码错误！')
+=======
+        console.log('session', ctx.session)
+        console.log('登录成功')
+>>>>>>> 2f0970eff13433e8641ac6e0ab940045f0c1c4df
       }
     }).catch(err => {
       ctx.body = 'false'

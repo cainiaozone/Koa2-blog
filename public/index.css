@@ -213,8 +213,13 @@ a:hover {
   left: 50%;
   top: 50%;
   padding: 4px 20px;
+<<<<<<< HEAD
   width: 120px;
   margin-left: -80px;
+=======
+  width: 100px;
+  margin-left: -70px;
+>>>>>>> 2f0970eff13433e8641ac6e0ab940045f0c1c4df
   text-align: center;
   background-color: rgba(0, 0, 0, 0.6);
   border-radius: 4px;

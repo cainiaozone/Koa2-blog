@@ -17,7 +17,11 @@ router.get('/posts', async (ctx, next) => {
     await userModel.findDataByUser(decodeURIComponent(ctx.request.querystring.splict('=')[1]))
       .then(result => {
         res = JSON.parse(JSON.stringify(result))
+<<<<<<< HEAD
         // console.log(res)
+=======
+        console.log(res)
+>>>>>>> 2f0970eff13433e8641ac6e0ab940045f0c1c4df
       });
     await ctx.render('posts', {
       session: ctx.session,
@@ -29,7 +33,11 @@ router.get('/posts', async (ctx, next) => {
       .then(result => {
         // console.log(result)
         res = JSON.parse(JSON.stringify(result))
+<<<<<<< HEAD
         // console.log('posts:', res)
+=======
+        console.log('posts:', res)
+>>>>>>> 2f0970eff13433e8641ac6e0ab940045f0c1c4df
       })
     await ctx.render('posts', {
       session: ctx.session,
@@ -48,13 +56,21 @@ router.get('/create', async (ctx, next) => {
 
 // POST '/create'  发布文章
 router.post('/create', async (ctx, next) => {
+<<<<<<< HEAD
   // console.log(ctx.session)
+=======
+  console.log(ctx.session)
+>>>>>>> 2f0970eff13433e8641ac6e0ab940045f0c1c4df
   var title = ctx.request.body.title;
   var content = ctx.request.body.content;
   var uid = ctx.session.id;
   var name = ctx.session.user;
   var time = moment().format('YYYY-MM-DD HH:mm')
+<<<<<<< HEAD
   // console.log([name, title, content, uid, time])
+=======
+  console.log([name, title, content, uid, time])
+>>>>>>> 2f0970eff13433e8641ac6e0ab940045f0c1c4df
 
   // 这里我们向数据库插入用户名、标题、内容、发表文章用户的 id、时间，成功返回 true，失败返回 false
   await userModel.insertPost([name, title, content, uid, time])
@@ -100,7 +116,11 @@ router.post('/:postId', async (ctx, next) => {
   // 获取文章评论数据 +1
   await userModel.findDataById(postId)
     .then(result => {
+<<<<<<< HEAD
       // console.log(JSON.parse(JSON.stringify(result)));
+=======
+      console.log(JSON.parse(JSON.stringify(result)));
+>>>>>>> 2f0970eff13433e8641ac6e0ab940045f0c1c4df
       res_comments = parseInt(JSON.parse(JSON.stringify(result))[0]['comments'])
       res_comments += 1
     })
@@ -165,7 +185,11 @@ router.get('/posts/:postId/edit', async (ctx, next) => {
   await userModel.findDataById(postId)
     .then(result => {
       res = JSON.parse(JSON.stringify(result))
+<<<<<<< HEAD
       // console.log("修改文章：" + res)
+=======
+      console.log("修改文章：" + res)
+>>>>>>> 2f0970eff13433e8641ac6e0ab940045f0c1c4df
     })
   await ctx.render('edit', {
     session: ctx.session,
