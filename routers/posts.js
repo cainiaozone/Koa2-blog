@@ -17,7 +17,7 @@ router.get('/posts', async (ctx, next) => {
     await userModel.findDataByUser(decodeURIComponent(ctx.request.querystring.splict('=')[1]))
       .then(result => {
         res = JSON.parse(JSON.stringify(result))
-        console.log(res)
+        // console.log(res)
       });
     await ctx.render('posts', {
       session: ctx.session,
@@ -29,7 +29,7 @@ router.get('/posts', async (ctx, next) => {
       .then(result => {
         // console.log(result)
         res = JSON.parse(JSON.stringify(result))
-        console.log('posts:', res)
+        // console.log('posts:', res)
       })
     await ctx.render('posts', {
       session: ctx.session,
@@ -48,13 +48,13 @@ router.get('/create', async (ctx, next) => {
 
 // POST '/create'  发布文章
 router.post('/create', async (ctx, next) => {
-  console.log(ctx.session)
+  // console.log(ctx.session)
   var title = ctx.request.body.title;
   var content = ctx.request.body.content;
   var uid = ctx.session.id;
   var name = ctx.session.user;
   var time = moment().format('YYYY-MM-DD HH:mm')
-  console.log([name, title, content, uid, time])
+  // console.log([name, title, content, uid, time])
 
   // 这里我们向数据库插入用户名、标题、内容、发表文章用户的 id、时间，成功返回 true，失败返回 false
   await userModel.insertPost([name, title, content, uid, time])
@@ -100,7 +100,7 @@ router.post('/:postId', async (ctx, next) => {
   // 获取文章评论数据 +1
   await userModel.findDataById(postId)
     .then(result => {
-      console.log(JSON.parse(JSON.stringify(result)));
+      // console.log(JSON.parse(JSON.stringify(result)));
       res_comments = parseInt(JSON.parse(JSON.stringify(result))[0]['comments'])
       res_comments += 1
     })
@@ -165,7 +165,7 @@ router.get('/posts/:postId/edit', async (ctx, next) => {
   await userModel.findDataById(postId)
     .then(result => {
       res = JSON.parse(JSON.stringify(result))
-      console.log("修改文章：" + res)
+      // console.log("修改文章：" + res)
     })
   await ctx.render('edit', {
     session: ctx.session,
