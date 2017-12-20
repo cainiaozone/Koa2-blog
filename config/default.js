@@ -1,6 +1,6 @@
 const config = {
   // 启动端口
-  port: 3000,
+  port: 8080,
   // 数据库配置
   database: {
     DATABASE: 'nodesql',

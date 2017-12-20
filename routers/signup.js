@@ -44,7 +44,7 @@ router.post('/signup', async (ctx, next) => {
           data: 3
         };
         console.log('注册成功')
-        userModel.insertData([ctx.request.body.name, md5(ctx.request.body.password)])
+        userModel.insertData([ctx.request.body.name, md5(ctx.request.body.name + ctx.request.body.password)])
       }
     })
 })

@@ -13,8 +13,8 @@ router.get('/', async (ctx, next) => {
 router.get('/posts', async (ctx, next) => {
   // 在这里我们先通过查找有没有类似 /post?author=XXX 的链接跳转，如果有就执行下面这句话，把用户名取下来，由于用户名可能存在中文，所以我们进行解码
   if (ctx.request.querystring) {
-    console.log('ctx.request.querystring', decodeURIComponent(ctx.request.querystring.split('=')[1]))
-    await userModel.findDataByUser(decodeURIComponent(ctx.request.querystring.splict('=')[1]))
+    console.log('ctx.request.querystring:', decodeURIComponent(ctx.request.querystring.split('=')[1]))
+    await userModel.findDataByUser(decodeURIComponent(ctx.request.querystring.split('=')[1]))
       .then(result => {
         res = JSON.parse(JSON.stringify(result))
         // console.log(res)
@@ -39,31 +39,14 @@ router.get('/posts', async (ctx, next) => {
 
 })
 
-// GET '/create'  跳转发表文章页面
-router.get('/create', async (ctx, next) => {
-  await ctx.render('create', {
-    session: ctx.session
-  })
-})
 
-// POST '/create'  发布文章
-router.post('/create', async (ctx, next) => {
-  // console.log(ctx.session)
-  var title = ctx.request.body.title;
-  var content = ctx.request.body.content;
-  var uid = ctx.session.id;
-  var name = ctx.session.user;
-  var time = moment().format('YYYY-MM-DD HH:mm')
-  // console.log([name, title, content, uid, time])
-
-  // 这里我们向数据库插入用户名、标题、内容、发表文章用户的 id、时间，成功返回 true，失败返回 false
-  await userModel.insertPost([name, title, content, uid, time])
-    .then(() => {
-      ctx.body = 'true'
-    }).catch(() => {
-      ctx.body = 'false'
+// 滚动无限加载数据，每次输出5条
+router.post('/posts/page/:postId', async (ctx, next) => {
+  await userModel.findPageById(ctx.params.postId)
+    .then(result => {
+      conole.log(result)
+      ctx.body = result
     })
-
 })
 
 // Get '/posts/:postId' 查看单篇文章
@@ -88,6 +71,50 @@ router.get('/posts/:postId', async (ctx, next) => {
     posts: res,
     comments: comment_res
   })
+})
+
+// GET '/create'  跳转发表文章页面
+router.get('/create', async (ctx, next) => {
+  await ctx.render('create', {
+    session: ctx.session
+  })
+})
+
+// POST '/create'  发布文章
+router.post('/create', async (ctx, next) => {
+  // console.log(ctx.session)
+  var title = ctx.request.body.title;
+  var content = ctx.request.body.content;
+  var uid = ctx.session.id;
+  var name = ctx.session.user;
+  var time = moment().format('YYYY-MM-DD HH:mm')
+  // console.log([name, title, content, uid, time])
+  // 将特殊字符转义
+  var newContent = content.replace(/[<">']/g, (target) => {
+    return {
+      '<': '&lt;',
+      '"': '&quot;',
+      '>': '&gt;',
+      "'": '&#39;'
+    }[target]
+  })
+  var newTitle = title.replace(/[<">']/g, (target) => {
+    return {
+      '<': '&lt;',
+      '"': '&quot;',
+      '>': '&gt;',
+      "'": '&#39;'
+    }[target]
+  })
+
+  // 这里我们向数据库插入用户名、标题、内容、发表文章用户的 id、时间，成功返回 true，失败返回 false
+  await userModel.insertPost([name, newTitle, newContent, uid, time])
+    .then(() => {
+      ctx.body = 'true'
+    }).catch(() => {
+      ctx.body = 'false'
+    })
+
 })
 
 // Post '/:postId' 发表评论

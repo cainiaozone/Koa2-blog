@@ -14,7 +14,7 @@
   <div class="success message"></div>
   <header>
     <div class="logo fl">
-      菜鸟空间
+      <a href="/">菜鸟空间</a>
       <% if(session.user){ %>
         <a class="user-name" href="/myinfo">
           <%= session.user %>
@@ -49,14 +49,6 @@
         $(data).fadeOut(2000)
       }
     }
-    var left = $('.error').offset().left;
-    var thisW = document.body.scrollWidth;
-
-    var ssW = $('.error').width();
-    console.log(thisW)
-    console.log(ssW)
-    var right = thisW - left - (ssW / 2);
-    console.log(left + "——" + right)
 
     $('.signout').click(() => {
       $.ajax({

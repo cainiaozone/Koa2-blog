@@ -1,15 +1,13 @@
 <% include header %>
-  <div class="container">
+  <div class="container edit">
     <form class="form create" method="post">
       <div>
         <label>标题：</label>
         <input type="text" name="title" placeholder="标题" value="<%= posts[0]['title']%>">
       </div>
-      <div>
+      <div class="bottom20">
         <label>内容：</label>
-        <textarea name="content">
-          <%= posts[0]['content'] %>
-        </textarea>
+        <textarea name="content"><%= posts[0]['content'] %></textarea>
       </div>
       <button type="button" class="submit">修改</button>
     </form>

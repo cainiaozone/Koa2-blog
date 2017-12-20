@@ -49,7 +49,7 @@ app.use(require('./routers/myinfo.js').routes())
 if (module.parent) {
   module.exports = app;
 } else {
-  app.listen(3000);
+  app.listen(8080);
 }
 
 console.log(`listening on port ${config.port}`)

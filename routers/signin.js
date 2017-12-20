@@ -17,14 +17,13 @@ router.post('/signin', async (ctx, next) => {
 
   var name = ctx.request.body.name;
   var pass = ctx.request.body.password;
-
   // 这里先查找用户名存在与否，存在则判断密码正确与否，不存在就返回 false
   await userModel.findDataByName(name)
     .then(result => {
       // console.log(result)
       var res = JSON.parse(JSON.stringify(result))
       // console.log(res)
-      if (name === res[0]['name'] && md5(pass) === res[0]['pass']) {
+      if (name === res[0]['name'] && md5(name + pass) === res[0]['pass']) {
         ctx.body = 'true'
         // ctx.flash.success = '登录成功'
         ctx.session.user = res[0]['name']
